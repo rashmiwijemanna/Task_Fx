@@ -1,5 +1,6 @@
 package controller;
 
+import db.DBConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import org.mindrot.jbcrypt.BCrypt;
 
 public class SignUpFormController {
@@ -46,7 +51,7 @@ public class SignUpFormController {
     }
 
     @FXML
-    void registerBtn(ActionEvent event) {
+    void registerBtn(ActionEvent event) throws SQLException {
         String firstName=firstnameTxt.getText();
         String lastName=lastNameTxt.getText();
         String email=emailTxt.getText();
@@ -75,6 +80,15 @@ public class SignUpFormController {
         }
 
         String hashedPassword= org.mindrot.jbcrypt.BCrypt.hashpw(password, org.mindrot.jbcrypt.BCrypt.gensalt());
+        Connection connection= DBConnection.getInstance().getConnection();
+        String sql="INSERT INTO User(first_name, last_name, email, password) VALUES (?, ?, ?, ?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, firstName);
+        preparedStatement.setString(2,lastName);
+        preparedStatement.setString(3,email);
+        preparedStatement.setString(4,hashedPassword);
+        preparedStatement.executeUpdate();
+
 
 
     }
@@ -85,6 +99,11 @@ public class SignUpFormController {
         alert.setContentText(message);
         alert.showAndWait();
 
+    }
+
+    private void navigateToLogin() throws IOException {
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"))));
+        stage.show();
     }
 
 
