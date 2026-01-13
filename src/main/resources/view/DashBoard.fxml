@@ -16,7 +16,7 @@
     <children>
         <VBox prefHeight="600.0" prefWidth="240.0" style="-fx-background-color: #FFB6C1; -fx-background-radius: 0 30 30 0;">
             <children>
-                <Label text="PinkDash" textFill="WHITE">
+                <Label text="TASK" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="26.0" />
                     </font>
@@ -26,7 +26,7 @@
                 </Label>
                 <VBox spacing="10.0">
                     <children>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #FF69B4; -fx-text-fill: white; -fx-background-radius: 15; -fx-cursor: hand;" text="🏠  Main Dashboard">
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #FF69B4; -fx-text-fill: white; -fx-background-radius: 15; -fx-cursor: hand;" text=" Main Dashboard">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -57,7 +57,7 @@
                     <children>
                         <VBox alignment="CENTER_LEFT">
                             <children>
-                                <Label fx:id="welcomeLabel" text="Welcome Back, User!" textFill="#8b4367">
+                                <Label fx:id="welcomeLabel" text="Welcome Back, " textFill="#8b4367">
                                     <font>
                                         <Font name="System Bold" size="24.0" />
                                     </font>
@@ -65,7 +65,14 @@
                                 <Label text="You have successfully logged in." textFill="#b27fa0" />
                             </children>
                         </VBox>
-                        <Pane HBox.hgrow="ALWAYS" />
+                        <Pane HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="userTxt" layoutX="5.0" layoutY="4.0" text="User" textFill="#8b4367">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children></Pane>
                         <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: white; -fx-text-fill: #FF69B4; -fx-background-radius: 20; -fx-border-color: #FF69B4; -fx-border-radius: 20; -fx-cursor: hand;" text="Logout">
                             <font>
                                 <Font name="System Bold" size="13.0" />

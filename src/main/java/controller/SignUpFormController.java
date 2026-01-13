@@ -21,7 +21,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class SignUpFormController {
 
     @FXML
-    private PasswordField emailTxt;
+    private TextField emailTxt;
 
     @FXML
     private TextField firstnameTxt;
@@ -51,14 +51,14 @@ public class SignUpFormController {
     }
 
     @FXML
-    void registerBtn(ActionEvent event) throws SQLException {
+    void registerBtn(ActionEvent event) throws SQLException, IOException {
         String firstName=firstnameTxt.getText();
         String lastName=lastNameTxt.getText();
         String email=emailTxt.getText();
         String password=passwordTxt.getText();
         String reEnterPassword=reEnterPasswordTxt.getText();
 
-        if(firstName.isEmpty()|lastName.isEmpty()){
+        if(firstName.isEmpty()|| lastName.isEmpty()){
             errorPop("First name and last name are required");
             return;
         }
@@ -74,20 +74,21 @@ public class SignUpFormController {
         }
 
         String passwordCheck="^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{8,}$";
-        if (!password.matches(reEnterPassword)){
+        if (!password.matches(passwordCheck)){
             errorPop("password must have at least 8 characters . UPPER, LOWER, Symbols");
             return;
         }
 
         String hashedPassword= org.mindrot.jbcrypt.BCrypt.hashpw(password, org.mindrot.jbcrypt.BCrypt.gensalt());
         Connection connection= DBConnection.getInstance().getConnection();
-        String sql="INSERT INTO User(first_name, last_name, email, password) VALUES (?, ?, ?, ?)";
+        String sql="INSERT INTO User(first_name, last_name, email, password_hash) VALUES (?, ?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, firstName);
         preparedStatement.setString(2,lastName);
         preparedStatement.setString(3,email);
         preparedStatement.setString(4,hashedPassword);
         preparedStatement.executeUpdate();
+        navigateToLogin();
 
 
 
@@ -102,8 +103,7 @@ public class SignUpFormController {
     }
 
     private void navigateToLogin() throws IOException {
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"))));
-        stage.show();
+        Stage stage=(Stage) emailTxt.getScene().getWindow();
     }
 
 

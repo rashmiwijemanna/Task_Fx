@@ -26,11 +26,6 @@
             <Font size="15.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="emailTxt" layoutX="79.0" layoutY="215.0" prefHeight="38.0" prefWidth="198.0" promptText="Email Address" style="-fx-background-color: #f2c3b9; -fx-background-radius: 15; -fx-prompt-text-fill: white;">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </PasswordField>
       <Button fx:id="signin" layoutX="245.0" layoutY="397.0" mnemonicParsing="false" onAction="#registerBtn" style="-fx-background-color: #f2c3b9; -fx-background-radius: 15;" text="Register" textFill="WHITE">
          <font>
             <Font size="15.0" />
@@ -56,5 +51,10 @@
             <Font size="15.0" />
          </font>
       </Button>
+      <TextField fx:id="emailTxt" layoutX="79.0" layoutY="211.0" prefHeight="38.0" prefWidth="198.0" promptText="Email" style="-fx-background-color: #f2c3b9; -fx-background-radius: 15; -fx-prompt-text-fill: white;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
