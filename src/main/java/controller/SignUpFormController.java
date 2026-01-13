@@ -79,6 +79,12 @@ public class SignUpFormController {
            return;
        }
 
+       String passwordCheck="^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{8,}$";
+       if (!password.matches(reEnterPassword)){
+           errorPop("password must have at least 8 characters . UPPER, LOWER, Symbols");
+           return;
+       }
+
 
     }
 
