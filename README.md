@@ -2,7 +2,16 @@
 
 A modern, "slightly pink" themed desktop application built with JavaFX. This project features a secure user authentication system using **jBCrypt** for password hashing and **MySQL** for persistent data storage.
 
+## 📸 Screenshots
 
+### Sign In Page
+![Login Screen](src/main/resources/screenshots/signIn.png)
+
+### Sign Up Page
+![Register Screen](src/main/resources/screenshots/signUp.png)
+
+### Dashboard
+![Dashboard Screen](src/main/resources/screenshots/dashBoard.png)
 
 ## ✨ Features
 
