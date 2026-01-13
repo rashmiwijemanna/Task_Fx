@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -45,6 +46,29 @@ public class SignUpFormController {
 
     @FXML
     void registerBtn(ActionEvent event) {
+
+    }
+    private void errorPop(String message){
+        Alert alert=new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText("nulll");
+        alert.setContentText(message);
+        alert.showAndWait();
+
+    }
+
+    private void signUpControlling(){
+       String firstName=firstnameTxt.getText();
+       String lastName=lastNameTxt.getText();
+       String email=emailTxt.getText();
+       String password=passwordTxt.getText();
+       String reEnterPassword=reEnterPasswordTxt.getText();
+
+       if(firstName.isEmpty()|lastName.isEmpty()){
+           errorPop("First name and last name are required");
+           return;
+       }
+
 
     }
 
