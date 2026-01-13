@@ -17,12 +17,12 @@
             <Image url="@../../../../../javafx/Assignments%20and%20CourseWorks/studentsManagemntApplication/src/main/resources/image/glasslogin.png" />
          </image>
       </ImageView>
-      <Label layoutX="228.0" layoutY="144.0" prefHeight="27.0" prefWidth="122.0" text="WELCOME" textFill="WHITE">
+      <Label layoutX="241.0" layoutY="141.0" prefHeight="27.0" prefWidth="122.0" text="Sign In" textFill="WHITE">
          <font>
             <Font name="Bodoni MT" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTxt" layoutX="185.0" layoutY="210.0" prefHeight="38.0" prefWidth="198.0" promptText="Username" style="-fx-background-color: #f2c3b9; -fx-background-radius: 15; -fx-prompt-text-fill: white;">
+      <TextField fx:id="emailTxt" layoutX="185.0" layoutY="210.0" prefHeight="38.0" prefWidth="198.0" promptText="Email" style="-fx-background-color: #f2c3b9; -fx-background-radius: 15; -fx-prompt-text-fill: white;">
          <font>
             <Font size="15.0" />
          </font>

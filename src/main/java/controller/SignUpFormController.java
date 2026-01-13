@@ -1,4 +1,51 @@
 package controller;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
 public class SignUpFormController {
+
+    @FXML
+    private PasswordField emailTxt;
+
+    @FXML
+    private TextField firstnameTxt;
+
+    @FXML
+    private TextField lastNameTxt;
+
+    @FXML
+    private PasswordField passwordTxt;
+
+    @FXML
+    private PasswordField reEnterPasswordTxt;
+
+    @FXML
+    private Button signin;
+
+    @FXML
+    private Button signin1;
+    Stage stage=new Stage();
+
+    @FXML
+    void backToLoginBtn(ActionEvent event) throws IOException {
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"))));
+        stage.show();
+
+
+    }
+
+    @FXML
+    void registerBtn(ActionEvent event) {
+
+    }
+
 }
