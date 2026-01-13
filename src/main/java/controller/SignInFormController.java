@@ -46,13 +46,14 @@ public class SignInFormController {
             return;
         }
 
-        String sql="SELECT password_hash FROM User WHERE email = ?";
+        String sql="SELECT first_name, password_hash FROM User WHERE email = ?";
         Connection connection= DBConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, email);
         ResultSet resultSet = preparedStatement.executeQuery();
 
         if(resultSet.next()) {
+            String userName=resultSet.getString("first_name");
             String storedHash = resultSet.getString("password_hash");
 
             if (BCrypt.checkpw(password, storedHash)) {
@@ -86,6 +87,18 @@ public class SignInFormController {
             throw new RuntimeException(e);
         }
 
+    }
+
+    private void navigateToDashboard(ActionEvent event, String name) throws IOException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/view/DashBoard.fxml"));
+        Parent root=loader.load();
+
+        DashBoardFormController dashBoardFormController=loader.getController();
+        dashBoardFormController.setWelcomeMessage(name);
+
+        Stage stage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     private void errorPop(String message){
