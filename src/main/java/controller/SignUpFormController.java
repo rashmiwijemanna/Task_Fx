@@ -69,7 +69,19 @@ public class SignUpFormController {
            return;
        }
 
+       if(!email.endsWith("@gmail.com")){
+           errorPop("Email must ends with @gmail.com");
+           return;
+       }
+
+       if(!password.equals(reEnterPassword)){
+           errorPop("password dont match enter again");
+           return;
+       }
+
 
     }
+
+
 
 }
