@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class SignUpFormController {
 
@@ -72,6 +73,9 @@ public class SignUpFormController {
             errorPop("password must have at least 8 characters . UPPER, LOWER, Symbols");
             return;
         }
+
+        String hashedPassword= org.mindrot.jbcrypt.BCrypt.hashpw(password, org.mindrot.jbcrypt.BCrypt.gensalt());
+
 
     }
     private void errorPop(String message){
