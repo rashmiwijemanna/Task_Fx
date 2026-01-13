@@ -4,6 +4,8 @@ import db.DBConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -40,12 +42,11 @@ public class SignUpFormController {
 
     @FXML
     private Button signin1;
-    Stage stage=new Stage();
+//    Stage stage=new Stage();
 
     @FXML
     void backToLoginBtn(ActionEvent event) throws IOException {
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"))));
-        stage.show();
+        navigateToLogin(event);
 
 
     }
@@ -88,7 +89,12 @@ public class SignUpFormController {
         preparedStatement.setString(3,email);
         preparedStatement.setString(4,hashedPassword);
         preparedStatement.executeUpdate();
-        navigateToLogin();
+        Alert alert=new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText("Registration Successful plz log in");
+        alert.showAndWait();
+        navigateToLogin(event);
 
 
 
@@ -102,8 +108,11 @@ public class SignUpFormController {
 
     }
 
-    private void navigateToLogin() throws IOException {
-        Stage stage=(Stage) emailTxt.getScene().getWindow();
+    private void navigateToLogin(ActionEvent event) throws IOException {
+        Parent root=FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
+        Stage stage=(Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
 

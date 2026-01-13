@@ -37,7 +37,7 @@ public class SignInFormController {
     private TextField usernameTxt;
 
     @FXML
-    void btnSignIn(ActionEvent event) throws SQLException {
+    void btnSignIn(ActionEvent event) throws SQLException, IOException {
         String email=emailTxt.getText();
         String password= passwordTxt.getText();
 
@@ -58,7 +58,7 @@ public class SignInFormController {
 
             if (BCrypt.checkpw(password, storedHash)) {
                 System.out.println("login success");
-                navigateTo(event, "/view/DashBoard.fxml");
+                navigateToDashboard(event, userName);
 
 
             } else {
