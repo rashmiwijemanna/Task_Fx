@@ -46,47 +46,50 @@ public class SignUpFormController {
 
     @FXML
     void registerBtn(ActionEvent event) {
+        String firstName=firstnameTxt.getText();
+        String lastName=lastNameTxt.getText();
+        String email=emailTxt.getText();
+        String password=passwordTxt.getText();
+        String reEnterPassword=reEnterPasswordTxt.getText();
+
+        if(firstName.isEmpty()|lastName.isEmpty()){
+            errorPop("First name and last name are required");
+            return;
+        }
+
+        if(!email.endsWith("@gmail.com")){
+            errorPop("Email must ends with @gmail.com");
+            return;
+        }
+
+        if(!password.equals(reEnterPassword)){
+            errorPop("password dont match enter again");
+            return;
+        }
+
+        String passwordCheck="^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{8,}$";
+        if (!password.matches(reEnterPassword)){
+            errorPop("password must have at least 8 characters . UPPER, LOWER, Symbols");
+            return;
+        }
 
     }
     private void errorPop(String message){
         Alert alert=new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Validation Error");
-        alert.setHeaderText("nulll");
+        alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
 
     }
 
-    private void signUpControlling(){
-       String firstName=firstnameTxt.getText();
-       String lastName=lastNameTxt.getText();
-       String email=emailTxt.getText();
-       String password=passwordTxt.getText();
-       String reEnterPassword=reEnterPasswordTxt.getText();
-
-       if(firstName.isEmpty()|lastName.isEmpty()){
-           errorPop("First name and last name are required");
-           return;
-       }
-
-       if(!email.endsWith("@gmail.com")){
-           errorPop("Email must ends with @gmail.com");
-           return;
-       }
-
-       if(!password.equals(reEnterPassword)){
-           errorPop("password dont match enter again");
-           return;
-       }
-
-       String passwordCheck="^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{8,}$";
-       if (!password.matches(reEnterPassword)){
-           errorPop("password must have at least 8 characters . UPPER, LOWER, Symbols");
-           return;
-       }
 
 
-    }
+//    private void signUpControlling(){
+//
+//
+//
+//    }
 
 
 
