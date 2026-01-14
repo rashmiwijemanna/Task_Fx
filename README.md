@@ -51,7 +51,7 @@ CREATE TABLE User (
     password_hash VARCHAR(255) NOT NULL
 );
 ```
-### 3. InstallationClone the repository:Bashgit clone [https://github.com/yourusername/pinkdash.git](https://github.com/yourusername/pinkdash.git)
+### 3. InstallationClone the repository:Bashgit clone [https://github.com/yourusername/pinkdash.git](https://github.com/rashmiwijemanna/Task_Fx.git)
 Configure your database credentials in DBConnection.java.Build the project and run AppInitializer.java.
 
 ### 4.📂 Project StructurePlaintextsrc/
